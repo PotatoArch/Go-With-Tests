@@ -8,9 +8,7 @@ func TestHello(t *testing.T) {
 		got := Hello("Potato")
 		want := "Hello, Potato"
 
-		if got != want {
-			t.Errorf("got : %q want : %q", got, want)
-		}
+		isCorrect(t, got, want)
 	})
 
 	// Testing For Default Values
@@ -18,8 +16,13 @@ func TestHello(t *testing.T) {
 		got := Hello("")
 		want := "Hello, World"
 
-		if got != want {
-			t.Errorf("got : %q want : %q", got, want)
-		}
+		isCorrect(t, got, want)
 	})
+}
+
+func isCorrect(t testing.TB, got, want string) {
+	t.Helper()
+	if got != want {
+		t.Errorf("got : %q want : %q", got, want)
+	}
 }
